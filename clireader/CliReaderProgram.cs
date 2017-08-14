@@ -1,6 +1,4 @@
-﻿using CommandLine;
-using CommandLine.Text;
-using CommandLineParser.Arguments;
+﻿using CommandLineParser.Arguments;
 using CommandLineParser.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -12,21 +10,10 @@ using System.Threading.Tasks;
 
 namespace clireader
 {
-    class Program 
+    class CliReaderProgram 
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        static void Main2(string[] args)
-        {
-            var opts = new TOptions();
-            //var gopts = new GetOptions();
-            var result1 = CommandLine.Parser.Default.ParseArguments(args, opts);
-            //var result2 = CommandLine.Parser.Default.ParseArguments(args, gopts);
-            
-            logger.Info(" Config read inp1: " + opts.inp1);
-            logger.Info(" Config read config: " + opts.config);
-            logger.Info("Parsing done!");  
-            
-        }
+      
 
         /* args contains command line arguments */
         static void Main(string[] args)
@@ -36,36 +23,18 @@ namespace clireader
 
             logger.Info("Parsing started!");  
             var p = new CommandLineOptions();
-            /* read the argument attributes from the class definition */
-            //parser.EqualsSignSyntaxValuesSeparators = new char[] { '=' , ' ' };
+
             parser.AcceptEqualSignSyntaxForValueArguments = true;
             parser.ExtractArgumentAttributes(p);
 
             try {
-                /* parse the command line */
                 parser.ParseCommandLine(args);
-                /* show parsed values for debugging purposes */
-                parser.ShowParsedArguments();
-
-                /* 
-                 * now you can work with the arguments, values are mapped to properties of 
-                 * ParsingTarget object ...
-                 */
-
-                // if (p.Hide)
-                //{
-                //   Hide();
-                //}
             }
-            /* CommandLineException is thrown when there is an error during parsing */
             catch (CommandLineException e) {
                 Console.WriteLine(e.Message);
-                /* 
-                 * you can help the user by printing all the possible arguments and their
-                 * description, CommandLineParser class can do this for you.
-                 */
                 parser.ShowUsage();
             }
+
             DateTime dt = DateTime.Parse(p.startDate, CultureInfo.InvariantCulture);
             
 
@@ -158,83 +127,83 @@ class ParsingTarget
    
 
 
-    /// <summary>
-    /// Classes for CommandLine library
-    /// </summary>
-    class SmartGenSubOptions 
-    {
-        [Option('c', "config", HelpText = " COnfig file containing other options and DB creds")]
-        public string config { get; set; }
+    ///// <summary>
+    ///// Classes for CommandLine library
+    ///// </summary>
+    //class SmartGenSubOptions 
+    //{
+    //    [Option('c', "config", HelpText = " COnfig file containing other options and DB creds")]
+    //    public string config { get; set; }
   
-        [Option('a', "all", HelpText = "All reports will be done")]
-        public bool All { get; set; }
-        // Remainder omitted
+    //    [Option('a', "all", HelpText = "All reports will be done")]
+    //    public bool All { get; set; }
+    //    // Remainder omitted
 
-    }
+    //}
 
-    class DumbGenSubOptions : SmartGenSubOptions
-    {
-        [Option("start-date", HelpText = "Start Date for reports")]
-        public DateTime startDate { get; set; }
+    //class DumbGenSubOptions : SmartGenSubOptions
+    //{
+    //    [Option("start-date", HelpText = "Start Date for reports")]
+    //    public DateTime startDate { get; set; }
 
-        [Option("end-date", HelpText = "End date for reports")]        
-        public DateTime endDate { get; set; }
-    }
+    //    [Option("end-date", HelpText = "End date for reports")]        
+    //    public DateTime endDate { get; set; }
+    //}
 
-    class BulkGenSubOptions : SmartGenSubOptions
-    {
-        // Remainder omitted
-        [Option("semimonthly", HelpText = "End date for reports")]         
-        public bool SemiMonthly { get; set; }
+    //class BulkGenSubOptions : SmartGenSubOptions
+    //{
+    //    // Remainder omitted
+    //    [Option("semimonthly", HelpText = "End date for reports")]         
+    //    public bool SemiMonthly { get; set; }
 
-        [Option("mothly", HelpText = "End date for reports")]                    
-        public bool Monthly { get; set; }
-    }
+    //    [Option("mothly", HelpText = "End date for reports")]                    
+    //    public bool Monthly { get; set; }
+    //}
 
-    class Options
-    {
-        public Options()
-        {
-            // Since we create this instance the parser will not overwrite it
-            SmartGenVerb = new SmartGenSubOptions { All = true };
-        }
+    //class Options
+    //{
+    //    public Options()
+    //    {
+    //        // Since we create this instance the parser will not overwrite it
+    //        SmartGenVerb = new SmartGenSubOptions { All = true };
+    //    }
 
-        [VerbOption("commit", HelpText = "Record changes to the repository.")]
-        public SmartGenSubOptions SmartGenVerb{ get; set; }
+    //    [VerbOption("commit", HelpText = "Record changes to the repository.")]
+    //    public SmartGenSubOptions SmartGenVerb{ get; set; }
 
-        [VerbOption("push", HelpText = "Update remote refs along with associated objects.")]
-        public BulkGenSubOptions BulkGenVerb { get; set; }
+    //    [VerbOption("push", HelpText = "Update remote refs along with associated objects.")]
+    //    public BulkGenSubOptions BulkGenVerb { get; set; }
 
-        [VerbOption("tag", HelpText = "Update remote refs along with associated objects.")]
-        public DumbGenSubOptions Verb { get; set; }
-    }
+    //    [VerbOption("tag", HelpText = "Update remote refs along with associated objects.")]
+    //    public DumbGenSubOptions Verb { get; set; }
+    //}
 
 
-    class TOptions
-    {
-        //[Option('r', "read", Required = true,
-        //  HelpText = "Input files to be processed.")]
-        //public IEnumerable<string> InputFiles { get; set; }
+    //class TOptions
+    //{
+    //    //[Option('r', "read", Required = true,
+    //    //  HelpText = "Input files to be processed.")]
+    //    //public IEnumerable<string> InputFiles { get; set; }
 
-        [Option("report", Required = true,
-          HelpText = "Input files to be processed.")]
-        public string inp1 { get; set; }
+    //    [Option("report", Required = true,
+    //      HelpText = "Input files to be processed.")]
+    //    public string inp1 { get; set; }
 
-        [Option("config", Required = true,
-         HelpText = "Input files to be processed.")]
-        public string config { get; set; }
+    //    [Option("config", Required = true,
+    //     HelpText = "Input files to be processed.")]
+    //    public string config { get; set; }
 
-        // Omitting long name, default --verbose
-        [Option(
-          HelpText = "Prints all messages to standard output.")]
-        public bool Verbose { get; set; }
+    //    // Omitting long name, default --verbose
+    //    [Option(
+    //      HelpText = "Prints all messages to standard output.")]
+    //    public bool Verbose { get; set; }
 
-        [Option(DefaultValue = "??????",
-          HelpText = "Content language.")]
-        public string Language { get; set; }
+    //    [Option(DefaultValue = "??????",
+    //      HelpText = "Content language.")]
+    //    public string Language { get; set; }
 
-        [Option(DefaultValue= null, MetaValue= "offset",
-          HelpText = "File offset.")]
-        public long? Offset { get; set; }
-    }
+    //    [Option(DefaultValue= null, MetaValue= "offset",
+    //      HelpText = "File offset.")]
+    //    public long? Offset { get; set; }
+    //}
 }

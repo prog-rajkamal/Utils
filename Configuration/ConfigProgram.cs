@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Configuring
 {
-    class Program
+    class ConfigProgram
     {
         static void Main(string[] args)
         {
@@ -20,7 +20,7 @@ namespace Configuring
             var pathOfThisExe = System.Reflection.Assembly.GetExecutingAssembly().Location;
             Configuration userConfig2 = ConfigurationManager.OpenExeConfiguration(pathOfThisExe); // "Configuration.exe"
          
-            ConfigurationFileMap abc = new ConfigurationFileMap("Configuration.exe.raj.config");
+            ConfigurationFileMap abc = new ConfigurationFileMap("Configuration.exe.config");
             Configuration userConfig = ConfigurationManager.OpenMappedMachineConfiguration(abc); // "Configuration.exe"
 
             var userInfoSection = userConfig.GetSection("databasecreds") as DbCredInfoSection;
@@ -31,7 +31,7 @@ namespace Configuring
             dbCredElement.DbUser= "rk105258"+DateTime.Now.Ticks;
             dbCredElement.DbPass = "pass"+DateTime.Now.ToShortTimeString();
 
-            userInfoSection.Users.Add(dbCredElement);
+         //   userInfoSection.Users.Add(dbCredElement);
             
             userConfig.Save();
             Console.WriteLine("App ends.");
@@ -41,7 +41,7 @@ namespace Configuring
        
 
     // Code copy pasted and updated from http://stackoverflow.com/a/756763
-
+   
     public class DbCredElement : ConfigurationElement
     {
         [ConfigurationProperty("dbname", IsRequired = true)]
@@ -122,6 +122,8 @@ namespace Configuring
                 BaseAdd(index, value);
             }
         }
+
+      
     }
 
     public class DbCredInfoSection : ConfigurationSection
@@ -145,5 +147,21 @@ namespace Configuring
         {
             get { return (DbCredElementCollection)base[_propUserInfo]; }
         }
+
+        [ConfigurationProperty("quotesTemplate")]
+        public ValueElement QuotesTemplate { get { return (ValueElement)base["quotesTemplate"]; } }
+
+        [ConfigurationProperty("dealerQuotesTemplate")]
+        public ValueElement DealerQuotesTemplate { get { return (ValueElement)base["dealerQuotesTemplate"]; } }
+
     }
+    public class ValueElement : ConfigurationElement
+{
+    [ConfigurationProperty( "value" )]
+    public string Value
+    {
+        get { return (string)base[ "value" ]; }
+        set { base[ "value" ] = value; }
+    }
+}
 }
