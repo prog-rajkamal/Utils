@@ -55,3 +55,12 @@ MVCForum.NuGet/
 .nuget/
 .vs/
 
+Poc_signalR/Scripts/jquery-3.1.1.slim.min.js
+Poc_signalR/Scripts/bootstrap.js
+Poc_signalR/Scripts/bootstrap.min.js
+Poc_signalR/Scripts/jquery-3.1.1.intellisense.js
+Poc_signalR/Scripts/jquery-3.1.1.js
+Poc_signalR/Scripts/jquery-3.1.1.min.js
+Poc_signalR/Scripts/jquery-3.1.1.min.map
+Poc_signalR/Scripts/jquery-3.1.1.slim.js
+Poc_signalR/Scripts/jquery-3.1.1.slim.min.map
