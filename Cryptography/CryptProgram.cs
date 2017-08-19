@@ -16,6 +16,12 @@ namespace Cryptography
 
             CommandLineParser.CommandLineParser parser = new CommandLineParser.CommandLineParser();
 
+            if(args.Length == 0)
+            {
+                showHelp();
+                return;
+            }
+
             var p = new CommandLineOptions();
 
             Regex r = new Regex("(.*)=(.*)");
@@ -54,13 +60,26 @@ namespace Cryptography
 
                 }
                 catch(FormatException fex){
-                    Console.WriteLine("Format Exception: text is not in ocrrect format. \r\nException message: "+fex.Message);
+                    Console.WriteLine("Format Exception: text is not in correct format. \r\nException message: "+fex.Message);
                 }
                 Console.Write("Decrypted: ");
             }
+            Console.WriteLine("Program finished");
 
 
+        }
 
+        private static void showHelp()
+        {
+            Console.WriteLine(
+@"
+    ------========= CryptoGraphy Program ======-----
+    Usage: 
+cryptography [-e|--encrypt] [-d|--decrypt] --text={Text} --key={Key}
+
+If you don't specify either encryption or decryption flag, then error will be raised.
+
+");
         }
     }
     class CommandLineOptions

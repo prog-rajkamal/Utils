@@ -30,10 +30,9 @@ namespace Configuring
             dbCredElement.DbName = "Nmax";
             dbCredElement.DbUser= "rk105258"+DateTime.Now.Ticks;
             dbCredElement.DbPass = "pass"+DateTime.Now.ToShortTimeString();
-
-         //   userInfoSection.Users.Add(dbCredElement);
-            
             userConfig.Save();
+
+            Console.WriteLine("There are {0} users in config", userInfoSection.Users.Count);
             Console.WriteLine("App ends.");
 
         }
