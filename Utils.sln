@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "AppLogger\Logging.csproj", "{D4CB6544-8B6A-4441-B4D0-6422550F82E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{333AFA51-16FA-4D45-97B7-BEABA4792F9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clireader", "clireader\Clireader.csproj", "{25864DC2-41D3-4660-B707-2C426EE864B2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mailer", "..\Email Sender\mailer\mailer.csproj", "{9CB2AF09-7AFD-46F8-886C-4A0C1CB4394D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography", "Cryptography\Cryptography.csproj", "{1CD41E18-C241-4F3E-A9D1-25249C818AB1}"
 EndProject
@@ -18,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc_signalR", "Poc_signalR\Poc_signalR.csproj", "{A275072A-CF58-4BEB-8682-DA26347D7C7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamlReader", "YamlReader\YamlReader.csproj", "{048EA23F-CEBD-4C8F-AA13-FF2DCF9A5F3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAppDatabaseConnect", "CoreAppDatabaseConnect\CoreAppDatabaseConnect.csproj", "{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{25864DC2-41D3-4660-B707-2C426EE864B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25864DC2-41D3-4660-B707-2C426EE864B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25864DC2-41D3-4660-B707-2C426EE864B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CB2AF09-7AFD-46F8-886C-4A0C1CB4394D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CB2AF09-7AFD-46F8-886C-4A0C1CB4394D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CB2AF09-7AFD-46F8-886C-4A0C1CB4394D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CB2AF09-7AFD-46F8-886C-4A0C1CB4394D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CD41E18-C241-4F3E-A9D1-25249C818AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CD41E18-C241-4F3E-A9D1-25249C818AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CD41E18-C241-4F3E-A9D1-25249C818AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,8 +53,15 @@ Global
 		{048EA23F-CEBD-4C8F-AA13-FF2DCF9A5F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{048EA23F-CEBD-4C8F-AA13-FF2DCF9A5F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{048EA23F-CEBD-4C8F-AA13-FF2DCF9A5F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3287BCE1-436D-4A5F-8B40-2C32A52C353D}
 	EndGlobalSection
 EndGlobal
