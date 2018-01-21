@@ -16,24 +16,29 @@ namespace AdminCrud.Controllers
 
         public UserController()
         {
-            this.userList = new FakeUser();
+            this.userList = FakeUser.GetUsers();
         }
         // GET: api/User
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return this.userList.Users;
+            lock (this.userList.Users)
+            {
+                return this.userList.Users;
+            }
         }
 
         // GET: api/User/5
         [HttpGet("{id}", Name = "Get")]
         public User Get(int id)
         {
-            try {
+            try
+            {
 
-                return this.userList.Users.First( us => us.Id == id);
+                return this.userList.Users.First(us => us.Id == id);
             }
-            catch(Exception) {
+            catch (Exception)
+            {
 
                 //this.Redirect("User not found");
                 throw new Exception("User not found");
@@ -42,8 +47,24 @@ namespace AdminCrud.Controllers
 
         // POST: api/User
         [HttpPost]
-        public void Post([FromBody]string value)
+        public User Post([FromBody]User value)
         {
+
+            lock (this.userList.Users)
+            {
+
+                this.userList.Users.Add(new Models.User()
+                {
+                    Name = value.Name,
+                    DateOfBirth = value.DateOfBirth,
+                    UserRole = value.UserRole,
+                    EmailId = value.EmailId,
+                    Id = this.userList.Users.Last().Id + 1,
+                });
+            }
+
+            return this.userList.Users.Last();
+
         }
 
         // PUT: api/User/5
