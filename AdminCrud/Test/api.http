@@ -6,7 +6,6 @@ GET {{base}}/user
 ###
 GET {{base}}/user/99
 
-
 ###
 POST {{base}}/user
 Accept: application/json, text/javascript, */*; q=0.01
@@ -20,3 +19,5 @@ Content-Type: application/json; charset=UTF-8
     "UserRole":2
 }
 
+###
+DELETE {{base}}/user/99

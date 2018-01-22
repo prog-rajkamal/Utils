@@ -30,18 +30,18 @@ namespace AdminCrud.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}", Name = "Get")]
-        public User Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
 
-                return this.userList.Users.First(us => us.Id == id);
+                return Ok(this.userList.Users.First(us => us.Id == id));
             }
             catch (Exception)
             {
 
                 //this.Redirect("User not found");
-                throw new Exception("User not found");
+                return NotFound("User not found");
             }
         }
 
@@ -75,8 +75,14 @@ namespace AdminCrud.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public object Delete(int id)
         {
+            var num = this.userList.Users.RemoveAll(usr => usr.Id == id);
+            if (num == 0)
+            {
+                return Json(new { StatusCode = 404, Message = "NO User was found." });
+            }
+            return Json(new { StatusCode = 200, Message = "User was deleted succesfully." });
         }
     }
 }
