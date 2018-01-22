@@ -16,15 +16,15 @@ namespace AdminCrud.Controllers
 
         public UserController()
         {
-            this.userList = FakeUser.GetUsers();
+            // this.userList = FakeUser.GetUsers();
         }
         // GET: api/User
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            lock (this.userList.Users)
+            using (var context = new UserContext())
             {
-                return this.userList.Users;
+                return context.Users.ToList();
             }
         }
 
@@ -34,8 +34,10 @@ namespace AdminCrud.Controllers
         {
             try
             {
-
-                return Ok(this.userList.Users.First(us => us.Id == id));
+                using (var context = new UserContext())
+                {
+                    return Ok(context.Users.First(us => us.Id == id));
+                }
             }
             catch (Exception)
             {
@@ -50,20 +52,22 @@ namespace AdminCrud.Controllers
         public User Post([FromBody]User value)
         {
 
-            lock (this.userList.Users)
-            {
 
-                this.userList.Users.Add(new Models.User()
+
+            using (var context = new UserContext())
+            {
+                var newUser = new Models.User()
                 {
                     Name = value.Name,
                     DateOfBirth = value.DateOfBirth,
                     UserRole = value.UserRole,
                     EmailId = value.EmailId,
-                    Id = this.userList.Users.Last().Id + 1,
-                });
+                };
+                context.Users.Add(newUser);
+                context.SaveChanges();
+                return newUser;
             }
 
-            return this.userList.Users.Last();
 
         }
 
@@ -77,11 +81,18 @@ namespace AdminCrud.Controllers
         [HttpDelete("{id}")]
         public object Delete(int id)
         {
-            var num = this.userList.Users.RemoveAll(usr => usr.Id == id);
-            if (num == 0)
+            using (var cxt = new UserContext())
             {
-                return Json(new { StatusCode = 404, Message = "NO User was found." });
+                var delUser = cxt.Users.Find(id);
+                if (delUser == null)
+                {
+                    return Json(new { StatusCode = 404, Message = "NO User was found." });
+                }
+                cxt.Users.Remove(delUser);
+                cxt.SaveChanges();
+
             }
+
             return Json(new { StatusCode = 200, Message = "User was deleted succesfully." });
         }
     }
