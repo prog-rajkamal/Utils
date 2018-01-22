@@ -1,47 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using JetBrains.Annotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminCrud.Models
 {
-    public class FakeUser
+    public class UserContext : DbContext
     {
-        private static FakeUser _single;
-        public FakeUser()
+        public UserContext() : base()
         {
-            //int user_seq = 1;
-            Users = new List<User>();
-
-            for (int user_seq = 1; user_seq < 100; user_seq++)
-            {
-
-                Users.Add(new User()
-                {
-                    Id = user_seq,
-                    Name = "User " + user_seq,
-                    EmailId = String.Format("user{0}@crud.com", user_seq),
-                    DateOfBirth = new DateTimeOffset(1980 + user_seq, user_seq % 12 + 1, user_seq % 28 + 1, 0, 0, 0, TimeSpan.Zero),
-                    UserRole = Role.User
-                });
-            }
-
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder opts)
+        {
+            opts.UseSqlServer(@"Server=Delli5\SQLEx; Database = master; User id=sa;Password=info123!");
         }
 
-        internal static FakeUser GetUsers()
-        {
-            var a = new { };
-            lock (a)
-            {
-                if (_single == null)
-                {
-                    _single = new FakeUser();
-                }
-            }
-            return _single;
-        }
 
-        public List<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

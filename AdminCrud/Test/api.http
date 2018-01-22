@@ -13,10 +13,10 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "Id":101,
-    "Name":"User 101",
+    "Name":"User 02",
     "EmailId": "user_post01@example.com",
     "dateOfBirth":"1999-02-02T00:00:00+00:00",
-    "UserRole":2
+    "UserRole":3
 }
 
 ###
