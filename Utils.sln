@@ -17,6 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc_signalR", "Poc_signalR\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamlReader", "YamlReader\YamlReader.csproj", "{048EA23F-CEBD-4C8F-AA13-FF2DCF9A5F3E}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailer", "Mailer\Mailer.csproj", "{3A3DC987-B470-41DC-BF28-8FCEBA64CC7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBReader_Oracle", "DBReader\DBReader_Oracle.csproj", "{EE4A03BC-7F6F-4E34-96F3-AC98CB9EC78F}"
@@ -32,6 +33,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Throttle", "Throttle\Throttle.csproj", "{AAA4E49B-49B1-4F3E-A856-E42AEBDAE9E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestfulApi", "RestfulApi\RestfulApi.csproj", "{16CFB458-C710-49BC-835C-37C45BC709E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAppDatabaseConnect", "CoreAppDatabaseConnect\CoreAppDatabaseConnect.csproj", "{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminCrud", "AdminCrud\AdminCrud.csproj", "{FB82C1CD-EE17-4E8A-9520-9D54FFF42D12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,8 +103,19 @@ Global
 		{16CFB458-C710-49BC-835C-37C45BC709E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16CFB458-C710-49BC-835C-37C45BC709E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16CFB458-C710-49BC-835C-37C45BC709E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2750EBA1-8320-4FC3-B236-F8FE29B4CC85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB82C1CD-EE17-4E8A-9520-9D54FFF42D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB82C1CD-EE17-4E8A-9520-9D54FFF42D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB82C1CD-EE17-4E8A-9520-9D54FFF42D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB82C1CD-EE17-4E8A-9520-9D54FFF42D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3287BCE1-436D-4A5F-8B40-2C32A52C353D}
 	EndGlobalSection
 EndGlobal
